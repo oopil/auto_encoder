@@ -3,6 +3,20 @@ import tensorflow as tf
 ##################################################################################
 # Custom Operation
 ##################################################################################
+class neuralnet:
+    def __init__(self):
+        pass
+
+    def build(self, inputs, labels, ch):
+        x = tf.layers.dense(inputs, units=ch, activation=tf.nn.softmax)
+        x = tf.layers.dense(inputs, units=ch*2, activation=tf.nn.softmax)
+        x = tf.layers.dense(inputs, units=ch*4, activation=tf.nn.softmax)
+        x = tf.layers.dense(inputs, units=ch*2, activation=tf.nn.softmax)
+        x = tf.layers.dense(inputs, units=ch, activation=tf.nn.softmax)
+        x = tf.layers.dense(inputs, units=10, activation=tf.nn.softmax)
+        # x = tf.layers.dense(x, units=10, activation=self.activ)
+        return x
+
 class Network:
     def __init__(self,
                  weight_initializer,
